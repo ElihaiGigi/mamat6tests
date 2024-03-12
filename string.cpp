@@ -46,7 +46,6 @@ StringArray String::split(const char *delimiters) const{
     return arr;
 }
 GenericString& String::operator=(const char *str){
-    delete[] this->get_string();
     this->set_string(str);
     return *this;
 }

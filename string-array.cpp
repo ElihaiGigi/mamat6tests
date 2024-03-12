@@ -1,6 +1,5 @@
 #include "string-array.h"
 StringArray::StringArray(){
-    str_arr = nullptr;
     str_arr = new GenericString*[MAX_SEPARATION];
 }
 
@@ -31,4 +30,5 @@ GenericString* StringArray::get_element(int index) const {
 
 void StringArray::set_element( GenericString* str, int index){
     this->str_arr[index] = str;
+    //this->str_arr[index]->as_string() = str->as_string().get_string();
 }

@@ -1,4 +1,3 @@
-
 #ifndef STRING_ARRAY_H
 #define STRING_ARRAY_H
 #include "generic-string.h"

@@ -67,7 +67,7 @@ bool ip::match(const GenericString &packet) const{
         {
             ip temp_ip(element->as_string().get_string());
             // check match does not work well
-            if(check_match(temp_ip.ip_arr, this->ip_arr ,this->get_mask() == true)){
+            if(check_match(temp_ip.ip_arr, this->ip_arr, this->get_mask())){
                 delete[] str_to_search;
                 return true;
             }else {

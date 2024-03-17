@@ -12,14 +12,18 @@ int main(int argc, char *argv[]) {
     if (!strncmp(rule_trimmed, "src-port", 8) || !strncmp(rule_trimmed, "dst-port", 8)) {
         rule = new port(rule_trimmed);
         parse_input(*rule);
+        delete rule;
     } else if (!strncmp(rule_trimmed, "src-ip", 6) || !strncmp(rule_trimmed, "dst-ip", 6)) {
         rule = new ip(rule_trimmed);
         parse_input(*rule);
+        delete rule;
     } else {
         // Invalid rule string
         std::cerr << "Invalid rule: " << rule_trimmed << std::endl;
         return 1;
     }
-    delete rule;
+    if(rule != nullptr){
+        delete rule;
+    }
     return 0;
 }

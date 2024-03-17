@@ -1,11 +1,7 @@
 #include "ip.h"
 
-const int INT_SIZE = 32;
-const int CHAR_SIZE = 8;
-const int FIRST_5_CHARS = 5;
-using namespace std;
-
 ip::~ip(){
+    delete this->ip_arr;
 }
 
 int ip::get_mask() const{
@@ -13,8 +9,6 @@ int ip::get_mask() const{
 }
 ip_type ip::get_ds_type() const{
     return this->ds_type;
-}
-StringArray* ip::get_ip() const{
 }
 
 ip::ip(const char* str) {
@@ -29,7 +23,7 @@ ip::ip(const char* str) {
     }else{
         this->ds_type = src;
     }
-    StringArray B = A.split("/"); //what if there is no delimiter?
+    StringArray B = A.split("/");
     temp_str = B.get_element(1);
     if(temp_str!= nullptr)
     {
@@ -66,7 +60,6 @@ bool ip::match(const GenericString &packet) const{
         if(!strncmp(element->as_string().get_string(),str_to_search,FIRST_5_CHARS))
         {
             ip temp_ip(element->as_string().get_string());
-            // check match does not work well
             if(check_match(temp_ip.ip_arr, this->ip_arr, this->get_mask())){
                 delete[] str_to_search;
                 return true;
@@ -74,11 +67,9 @@ bool ip::match(const GenericString &packet) const{
                 delete[] str_to_search;
                 return false;
             }
-
         }
-
     }
-
+    delete[] str_to_search;
     return false;
 }
 

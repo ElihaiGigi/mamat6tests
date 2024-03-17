@@ -1,6 +1,11 @@
 #include "string-array.h"
 StringArray::StringArray(){
     str_arr = new GenericString*[MAX_SEPARATION];
+    GenericString* arr_elem;
+    for(int i=0; i<MAX_SEPARATION; i++){
+         arr_elem = new String();
+         StringArray::set_element(arr_elem,i);
+    }
 }
 
 StringArray::StringArray(const StringArray &other){
@@ -30,5 +35,4 @@ GenericString* StringArray::get_element(int index) const {
 
 void StringArray::set_element( GenericString* str, int index){
     this->str_arr[index] = str;
-    //this->str_arr[index]->as_string() = str->as_string().get_string();
 }

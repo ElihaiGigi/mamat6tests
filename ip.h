@@ -8,6 +8,11 @@
 #include "generic-field.h"
 #include "string.h"
 
+const int INT_SIZE = 32;
+const int CHAR_SIZE = 8;
+const int FIRST_5_CHARS = 5;
+using namespace std;
+
 typedef enum {dst,src} ip_type;
 
 class ip : public GenericField {
@@ -20,7 +25,6 @@ public:
     ~ip();
     int get_mask() const;
     ip_type get_ds_type() const;
-    StringArray* get_ip() const;
     bool match(const GenericString &packet) const;
 };
 //given two ip as string array, its check the law according to mask

@@ -1,12 +1,7 @@
 #include "ip.h"
 
 ip::~ip(){
-    if(this->ip_arr != nullptr){
-        for(int i=0;i<MAX_SEPARATION;i++){
-            delete this->ip_arr->get_element(i);
-        }
      delete this->ip_arr;
-    }
 }
 
 int ip::get_mask() const{
